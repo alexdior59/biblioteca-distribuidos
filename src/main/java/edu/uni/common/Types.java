@@ -7,19 +7,18 @@ public final class Types {
 
     public enum TipoOperacion { DEVOLUCION, RENOVACION /* (PRESTAMO en entrega 2) */ }
 
-    // Mensaje genérico que viaja PS->GC y GC->Actores
     public static class Evento {
-        public String idSolicitud;   // UUID/ULID
+        public String idSolicitud;
         public TipoOperacion tipo;
-        public String sede;          // "A" | "B"
-        public long timestamp;       // epoch millis
-        public Map<String, Object> payload; // idUsuario, idLibro o idPrestamo, etc.
+        public String sede;
+        public long timestamp;
+        public Map<String, Object> payload;
     }
 
     // Respuesta GC->PS
     public static class RespuestaPS {
-        public String status;  // "OK" | "UNSUPPORTED" | "ERROR"
-        public String nuevaFecha; // solo en RENOVACION (YYYY-MM-DD)
+        public String status;
+        public String nuevaFecha;
         public String mensaje;
         public static RespuestaPS ok() { var r = new RespuestaPS(); r.status = "OK"; return r; }
         public static RespuestaPS okRenovacion(String fecha) { var r = ok(); r.nuevaFecha = fecha; return r; }
@@ -29,13 +28,13 @@ public final class Types {
 
     // Mensaje Actor->GA
     public static class PeticionGA {
-        public String op;    // "devolucion" | "renovacion"
+        public String op;
         public Evento evt;
     }
 
     // Respuesta GA->Actor
     public static class RespuestaGA {
-        public String status; // "OK" | "DUP" | "ERROR"
+        public String status;
         public String mensaje;
         public static RespuestaGA ok() { var r = new RespuestaGA(); r.status = "OK"; return r; }
         public static RespuestaGA dup() { var r = new RespuestaGA(); r.status = "DUP"; return r; }

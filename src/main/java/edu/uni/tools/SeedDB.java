@@ -13,10 +13,8 @@ public class SeedDB {
     }
 
     public static void main(String[] args) throws Exception {
-        // Parámetros simples del catálogo
         int totalLibros = 1000;
         int ejemplaresPorLibro = 1;
-        // IDs de libros L-0001 ... L-1000
         List<String> libros = new ArrayList<>();
         for (int i = 1; i <= totalLibros; i++) {
             libros.add(String.format("L-%04d", i));
@@ -27,7 +25,6 @@ public class SeedDB {
             base.librosDisponibles.put(id, ejemplaresPorLibro);
         }
 
-        // Construir Sede A (50 prestados) y Sede B (150 prestados)
         DB sedeA = clonar(base);
         DB sedeB = clonar(base);
 

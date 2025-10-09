@@ -7,7 +7,6 @@ import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
 public class Actor {
-    // Uso: java Actor <topic:devolucion|renovacion> <gcHost> <gaHost>
     public static void main(String[] args) throws Exception {
         if (args.length < 3) {
             System.out.println("Uso: java Actor <devolucion|renovacion> <gcHost> <gaHost>");

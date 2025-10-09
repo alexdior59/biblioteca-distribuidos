@@ -9,7 +9,6 @@ import org.zeromq.ZMQ;
 import java.time.LocalDate;
 
 public class GCServer {
-    // Uso: java GCServer <bindHost>    (ej: 0.0.0.0)
     public static void main(String[] args) throws Exception {
         String bindHost = args.length > 0 ? args[0] : "0.0.0.0";
 
@@ -33,7 +32,6 @@ public class GCServer {
                     String nueva = LocalDate.now().plusDays(7).toString();
                     respuesta = Types.RespuestaPS.okRenovacion(nueva);
                     rep.send(Json.MAPPER.writeValueAsBytes(respuesta));
-                    // publicar a actores
                     publish(pub, "renovacion", evt);
                 }
                 case DEVOLUCION -> {
@@ -52,7 +50,7 @@ public class GCServer {
 
     private static void publish(ZMQ.Socket pub, String topic, Types.Evento evt) throws Exception {
         String payload = Json.MAPPER.writeValueAsString(evt);
-        String frame = topic + " " + payload; // tópico + JSON
+        String frame = topic + " " + payload;
         pub.send(frame.getBytes(ZMQ.CHARSET));
         System.out.printf("[GC] PUB %s id=%s sede=%s%n", topic, evt.idSolicitud, evt.sede);
     }

@@ -12,13 +12,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
 
-/**
- * Persistencia mínima en JSON (db.json) con idempotencia por (idSolicitud, op).
- * Campos simulados:
- *  - librosDisponibles: Map<idLibro, Integer>
- *  - renovaciones:     Map<idPrestamo, Integer>
- *  - aplicados:        Set<String>  // "idSolicitud|op"
- */
+
 public class GAServer {
 
     static class DB {

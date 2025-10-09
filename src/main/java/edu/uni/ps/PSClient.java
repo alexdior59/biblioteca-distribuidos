@@ -12,8 +12,6 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class PSClient {
-    // Uso: java PSClient <csvPath> <sede(A|B)> <gcHost>
-    // CSV con encabezado: tipo;idUsuario;idLibro;idPrestamo
     public static void main(String[] args) throws Exception {
         if (args.length < 3) {
             System.out.println("Uso: java PSClient <csvPath> <sede> <gcHost>");
