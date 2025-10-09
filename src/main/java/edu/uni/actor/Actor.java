@@ -1,6 +1,6 @@
 package edu.uni.actor;
 
-import edu.uni.common.AppConfig;
+import  edu.uni.common.AppConfig;
 import edu.uni.common.Json;
 import edu.uni.common.Types;
 import org.zeromq.SocketType;
